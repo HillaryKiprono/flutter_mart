@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mart/screens/home_page.dart';
 import 'package:flutter_mart/screens/landing_screen.dart';
+import 'package:flutter_mart/screens/product_details.dart';
+import 'package:flutter_mart/screens/wishlist.dart';
 import 'package:splash_view/source/presentation/pages/splash_view.dart';
 import 'package:splash_view/source/presentation/widgets/done.dart';
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Mart',
-      theme: ThemeData.dark(
+      theme: ThemeData(
 
       ),
       home:SplashView(
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
           ],
         ),
           loadingIndicator: RefreshProgressIndicator(),
-        done: Done(const LandingScreen()),
+        done: Done( HomeScreen()),
         duration: const Duration(seconds: 6),
         // SplashView(
         //

@@ -1,74 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mart/screens/login.dart';
+import 'package:flutter_mart/screens/register.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            // image: DecorationImage(image: AssetImage("assets/images/"))
-            ),
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 78.0),
-          child: Container(
-            alignment: Alignment.bottomCenter,
-            decoration:BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage("https://media.istockphoto.com/id/923079848/photo/online-shopping.jpg?s=612x612&w=0&k=20&c=74cW4LDlcWRKlMMs49RKg2_-9lsCetPni4fhKjW7RhQ="),
-                fit: BoxFit.cover
-              )
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                RawMaterialButton(
-                  fillColor: Colors.grey,
-                  shape: StadiumBorder(),
-                  onPressed: () {},
-                  child: const Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            "assets/images/banner_image.jpg",
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 20),
+                child: RawMaterialButton(
+
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                  },
+                  shape: const StadiumBorder(),
+                  fillColor: Colors.blue,
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.app_registration),
+                      SizedBox(width: 20,),
+                      Text(
+                        "Login Here",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 20),
+                  child: RawMaterialButton(
+
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterScreen()));
+                    },
+                    shape: const StadiumBorder(),
+                    fillColor: Colors.blue,
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.app_registration),
-                        SizedBox(
-                          width: 28,
+                        SizedBox(width: 20,),
+                        Text(
+                          "Register Here",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Text("Register"),
+
                       ],
                     ),
+
                   ),
                 ),
-                RawMaterialButton(
-                  fillColor: Colors.grey,
-                  shape: StadiumBorder(),
-                  splashColor:Colors.blue ,
-                  onPressed: () {},
-                  child: const Padding(
-                    padding:
-                    EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.login),
-                        SizedBox(
-                          width: 28,
-                        ),
-                        Text("Login"),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+              ),
+
+            ],
           ),
         ),
-      ),
+      ],
     );
+
+
   }
 }
